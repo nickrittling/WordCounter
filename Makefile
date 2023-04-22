@@ -117,41 +117,41 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named bloom
+# Target rules for targets named WordCounter
 
 # Build rule for target.
-bloom: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 bloom
-.PHONY : bloom
+WordCounter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 WordCounter
+.PHONY : WordCounter
 
 # fast build rule for target.
-bloom/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bloom.dir/build.make CMakeFiles/bloom.dir/build
-.PHONY : bloom/fast
+WordCounter/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/build
+.PHONY : WordCounter/fast
 
-bloom.o: bloom.cpp.o
-.PHONY : bloom.o
+WordCounter.o: WordCounter.cpp.o
+.PHONY : WordCounter.o
 
 # target to build an object file
-bloom.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bloom.dir/build.make CMakeFiles/bloom.dir/bloom.cpp.o
-.PHONY : bloom.cpp.o
+WordCounter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/WordCounter.cpp.o
+.PHONY : WordCounter.cpp.o
 
-bloom.i: bloom.cpp.i
-.PHONY : bloom.i
+WordCounter.i: WordCounter.cpp.i
+.PHONY : WordCounter.i
 
 # target to preprocess a source file
-bloom.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bloom.dir/build.make CMakeFiles/bloom.dir/bloom.cpp.i
-.PHONY : bloom.cpp.i
+WordCounter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/WordCounter.cpp.i
+.PHONY : WordCounter.cpp.i
 
-bloom.s: bloom.cpp.s
-.PHONY : bloom.s
+WordCounter.s: WordCounter.cpp.s
+.PHONY : WordCounter.s
 
 # target to generate assembly for a file
-bloom.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/bloom.dir/build.make CMakeFiles/bloom.dir/bloom.cpp.s
-.PHONY : bloom.cpp.s
+WordCounter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WordCounter.dir/build.make CMakeFiles/WordCounter.dir/WordCounter.cpp.s
+.PHONY : WordCounter.cpp.s
 
 # Help Target
 help:
@@ -161,10 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... bloom"
-	@echo "... bloom.o"
-	@echo "... bloom.i"
-	@echo "... bloom.s"
+	@echo "... WordCounter"
+	@echo "... WordCounter.o"
+	@echo "... WordCounter.i"
+	@echo "... WordCounter.s"
 .PHONY : help
 
 

@@ -10,6 +10,9 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <map>
+
+
 
 class BloomFilter {
 public:
@@ -47,17 +50,22 @@ public:
   }
 
   void insert(std::string s) {
+	  std::string mname = "";
     if (k_ == 2) {
       if (dict[hash1(s)]) {
         conflict++;
       }
 
       dict[hash1(s)] = 1;
+      mname += std::to_string(hash1(s));
       if (dict[hash2(s)]) {
         conflict++;
       }
 
       dict[hash2(s)] = 1;
+      mname += std::to_string(hash2(s));
+      WC[mname] = 0;
+
 
     } // end k 2
     else {
@@ -66,27 +74,81 @@ public:
       }
 
       dict[hash1(s)] = 1;
+      mname += std::to_string(hash1(s));
 
       if (dict[hash2(s)]) {
         conflict;
       }
 
       dict[hash2(s)] = 1;
+      mname += std::to_string(hash2(s));
 
       if (dict[hash3(s)]) {
         conflict++;
       }
 
       dict[hash3(s)] = 1;
+      mname += std::to_string(hash3(s));
+      WC[mname] = 0;
     }
   } // end insert
+  
+
+  void wordcount(std::string s) {
+          std::string mname = "";
+    if (k_ == 2) {
+      mname += std::to_string(hash1(s));
+      mname += std::to_string(hash2(s));
+
+      WC[mname]++;
+
+
+    } // end k 2
+    else {
+      mname += std::to_string(hash1(s));
+      mname += std::to_string(hash2(s));
+      mname += std::to_string(hash3(s));
+      WC[mname]++;
+    }
+  } // end wordcount
+
+
+  void WCStart(){
+	std::ifstream infile;
+    	infile.open(file);
+    	if (!infile)
+      	std::cout << "File not found\n";
+    	std::string line;
+    	while (getline(infile, line)) {
+        	wordcount(line);
+   	 }
+   	infile.close();
+  }//end WCStart
+
 
   void output() {
     double prob = std::pow((1 - std::pow((1 - (1 / m_)), k_ * n_)), k_);
     std::cout << "m:" << m_ << " k:" << k_ << " n:" << n_ << std::endl;
     std::cout << "false positive probability: " << prob << std::endl;
     std::cout << "number of conflict: " << conflict << std::endl;
+  }//end output
+
+  void printMap(){
+	  for (const auto& pair : WC) {
+        std::cout << pair.first << ": " << pair.second << std::endl;
+    }
+  }//end printMap
+
+  void outputMap(){
+	  std::ofstream of;
+  of.open("WordCountOut.txt", std::fstream::out);
+  if (!of)
+    std::cout << "File WordCountOut not found\n";
+
+  for(const auto& pair : WC){
+	  of << pair.first << ": " << pair.second << std::endl;
   }
+  }//end outputMap()
 
 private:
   long long int m_;
@@ -95,5 +157,5 @@ private:
   int conflict;
   std::string file;
   std::vector<bool> dict;
-
+  std::map<std::string, int> WC;
 }; // end class BloomFIlter

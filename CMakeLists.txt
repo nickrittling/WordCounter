@@ -5,7 +5,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++20")
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
 
-project(Bloom)
+project(WordCounter)
 
 #include(FetchContent)
 #FetchContent_Declare(
@@ -23,13 +23,13 @@ find_package(OpenSSL REQUIRED)
 #add_subdirectory(external/CLI11)
 #add_subdirectory(external/sha256)
 #set(SOURCES file.cpp file2.cpp ${YOUR_DIRECTORY}/file1.h ${YOUR_DIRECTORY}/file2.h)
-set(SOURCES bloom.cpp bloom.h CLI11.hpp)
+set(SOURCES WordCounter.cpp bloom.h CLI11.hpp)
 add_executable(
-bloom
-bloom.cpp
+WordCounter
+WordCounter.cpp
 )
 #target_link_libraries(bloom CLI11)
 #target_link_libraries(bloom sha256)
-target_link_libraries(bloom OpenSSL::SSL OpenSSL::Crypto)
+target_link_libraries(WordCounter OpenSSL::SSL OpenSSL::Crypto)
 
 
