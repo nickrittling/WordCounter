@@ -20,15 +20,16 @@ project(Bloom)
 find_package(OpenSSL REQUIRED)
 
 
-add_subdirectory(external/CLI11)
+#add_subdirectory(external/CLI11)
 #add_subdirectory(external/sha256)
 #set(SOURCES file.cpp file2.cpp ${YOUR_DIRECTORY}/file1.h ${YOUR_DIRECTORY}/file2.h)
-set(SOURCES bloom.cpp bloom.h)
+set(SOURCES bloom.cpp bloom.h CLI11.hpp)
 add_executable(
 bloom
 bloom.cpp
 )
-target_link_libraries(bloom CLI11)
+#target_link_libraries(bloom CLI11)
 #target_link_libraries(bloom sha256)
 target_link_libraries(bloom OpenSSL::SSL OpenSSL::Crypto)
+
 

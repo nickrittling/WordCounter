@@ -1,0 +1,3 @@
+/home/nickr/WordCounter/CMakeFiles/bloom.dir
+/home/nickr/WordCounter/CMakeFiles/edit_cache.dir
+/home/nickr/WordCounter/CMakeFiles/rebuild_cache.dir

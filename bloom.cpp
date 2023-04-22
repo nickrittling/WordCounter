@@ -1,6 +1,6 @@
 #include "bloom.h"
-#include "CLI/CLI.hpp"
-#include <CLI/StringTools.hpp>
+#include "CLI11.hpp"
+//#include <CLI/StringTools.hpp>
 #include <iostream>
 
 int main(int argc, char **argv) {
