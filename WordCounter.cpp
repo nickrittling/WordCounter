@@ -4,7 +4,7 @@
 #include <string>
 #include "CLI11.hpp"
 #include "bloom.h"
-
+#include <chrono>
 
 int main(int argc, char **argv) {
 
@@ -28,9 +28,15 @@ int main(int argc, char **argv) {
     k = 2;
   }
 
+  auto start = std::chrono::high_resolution_clock::now();
+  std::ios_base::sync_with_stdio(false);
   BloomFilter bf( m, k, s);
-  bf.output();
   bf.WCStart();
   bf.outputMap();
+  auto end = std::chrono::high_resolution_clock::now();
+  double time_taken = std::chrono::duration_cast<std::
+				chrono::nanoseconds>(end - start).count();
+  time_taken *= 1e-9;
+  std::cout<<std::setprecision(9)<<time_taken<<std::endl;
   return 0;
 }//end main
